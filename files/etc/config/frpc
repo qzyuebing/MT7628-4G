@@ -13,5 +13,3 @@ config conf 'common'
 	option server_port '7600'
 	option server_addr '127.0.0.1'
 
-
-

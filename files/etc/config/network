@@ -6,7 +6,7 @@ config interface 'loopback'
 	option netmask '255.0.0.0'
 
 config globals 'globals'
-	option ula_prefix 'fd48:54d9:4e92::/48'
+	option ula_prefix 'fd64:0e73:9f1b::/48'
 
 config device
 	option name 'br-lan'
@@ -16,9 +16,14 @@ config device
 config interface 'lan'
 	option device 'br-lan'
 	option proto 'static'
+	option ipaddr '192.168.0.1'
 	option netmask '255.255.255.0'
 	option ip6assign '60'
-	option ipaddr '192.168.0.1'
+
+config interface 'wan'
+	option proto 'dhcp'
+	option device 'eth1'
+	option metric '101'
 
 config switch
 	option name 'switch0'
@@ -27,13 +32,8 @@ config switch
 
 config device
 	option name 'eth1'
-	option macaddr '0a:1b:2c:3d:4f:5e'
-	option mtu '1400'
-
-config interface 'wan'
-	option proto 'dhcp'
-	option device 'eth1'
-	option metric '101'
+	option mtu '1300'
+	option macaddr '86:96:81:02:98:22'
 
 config interface 'trw_wwan'
 	option proto 'dhcp'

@@ -7,23 +7,21 @@ config defaults
 
 config zone
 	option name 'lan'
-	list network 'lan'
 	option input 'ACCEPT'
 	option output 'ACCEPT'
 	option forward 'ACCEPT'
+	list network 'lan'
 
 config zone
 	option name 'wan'
 	option output 'ACCEPT'
 	option masq '1'
 	option mtu_fix '1'
-	list network 'wan'
-	list network 'wan6'
-	list network 'wwan'
-	list network 'trw_wwan'
-	list network 'trw_wwan6'
 	option input 'ACCEPT'
 	option forward 'ACCEPT'
+	list network 'wan'
+	list network 'trw_wwan'
+	list network 'trw_wwan6'
 
 config forwarding
 	option src 'lan'
@@ -133,14 +131,6 @@ config rule
 
 config include
 	option path '/etc/firewall.user'
-
-config redirect
-	option dest 'lan'
-	option target 'DNAT'
-	option name 'MMDVM'
-	option src 'wan'
-	option src_dport '1-65535'
-	option dest_port '1-65535'
 
 config include 'miniupnpd'
 	option type 'script'
